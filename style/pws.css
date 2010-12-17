@@ -1,0 +1,63 @@
+* {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+	background-color: white;
+}
+
+form {
+	text-align: center;
+}
+
+input {
+	border: 1px solid black;
+	background-color: white;
+	width: 200px;
+}
+
+input.submit {
+	background-color: black;
+	color: white;
+	cursor: pointer;
+	width: auto;
+}
+
+input.submit:hover {
+	background-color: #aaa;
+	color: #333;
+}
+
+#content {
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	line-height: 110%;
+}
+
+label {
+}
+
+input#query {
+	border-right-width: 0;
+}
+
+input#clearsearch {
+	width: 20px;
+}
+
+.pwgname {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+a {
+	text-decoration: underline;
+	color: black;
+}
+
+.pwitem {
+	text-decoration: underline;
+	cursor: pointer;
+}
+

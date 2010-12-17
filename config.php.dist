@@ -1,0 +1,32 @@
+<?php
+// File name of the master key which encrypts the passwords. Always have a
+// backup of this key, or your passwords will render unavailable!
+$masterKey = '/var/lib/passwordstore/pws.key';
+
+// Name of your password manager session. It is advised to change it to
+// something that reflects your company name or such.
+$sessionName = 'PWstoreSession';
+
+// Set this to true if you want this page to be served only through SSL
+// (https:) connections. It is generally a good idea to turn it on, even on
+// intranet-only use.
+$sslOnly = false;
+
+// Allow key to be reside under the document root. This is a big security hole, so it is not recommended to set it to true!
+$keyInDocroot = true;
+
+// Database settings
+// Database DSN. If you use an SQLite database, it is advised to put the
+// database somewhere outside the DocumentRoot!
+$dbDSN = 'sqlite:/var/lib/passwordstore/pwstore.db';
+$dbUser = null;
+$dbPassword = null;
+
+// Smarty template engine settings. You don't really have to touch it.
+$smartyInstallDir = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . dirname($_SERVER['PHP_SELF']) . DIRECTORY_SEPARATOR . 'smarty';
+$smartyTemplateDir = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . dirname($_SERVER['PHP_SELF']) . DIRECTORY_SEPARATOR . 'templates';
+$smartyCache = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . dirname($_SERVER['PHP_SELF']) . DIRECTORY_SEPARATOR . 'cache';
+
+// Encryption algorythm to use. Encryption method must support ECB mode.
+$encryptionAlg = MCRYPT_RIJNDAEL_256;
+
