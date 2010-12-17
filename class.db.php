@@ -322,7 +322,7 @@ if (!class_exists('PWSdb'))
 		{
 			$cipher = mcrypt_module_open($this->alg, '', 'ecb', '');
 			$iv_size = mcrypt_get_iv_size($this->alg, $this->mode);
-			$iv = mcrypt_create_iv($this->iv_size, MCRYPT_DEV_URANDOM);
+			$iv = mcrypt_create_iv($iv_size, MCRYPT_DEV_URANDOM);
 			mcrypt_generic_init($cipher, $this->key, $iv);
 			$enc = mcrypt_generic($cipher, $password);
 			mcrypt_generic_deinit($cipher);
