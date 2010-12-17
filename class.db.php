@@ -120,7 +120,15 @@ if (!class_exists('PWSdb'))
 			{
 				$this->userPasswordGroups[$username] = array();
 
-				$sth = $this->prepare('SELECT permissions FROM usergroups WHERE groupname IN (\'' . join("', '", $this->userUsergroups($username)) . '\')');
+				if ($this->isAdmin($username))
+				{
+					$query = 'SELECT groupname || \'+\' AS permissions FROM passwordgroups';
+				}
+				else
+				{
+					$query = 'SELECT permissions FROM usergroups WHERE groupname IN (\'' . join("', '", $this->userUsergroups($username)) . '\')';
+				}
+				$sth = $this->prepare($query);
 				$sth->execute();
 				while ($row = $sth->fetch())
 				{
