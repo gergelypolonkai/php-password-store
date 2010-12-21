@@ -61,3 +61,11 @@ a {
 	cursor: pointer;
 }
 
+span.button {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#addpassword {
+}
+
