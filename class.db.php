@@ -300,6 +300,7 @@ if (!class_exists('PWSdb'))
 				$sth = $this->prepare('UPDATE passwords SET password = ?, modifiedby = ?, modifiedat = datetime(\'now\') WHERE id = ?');
 				$params = array($this->encryptPassword($newPassword), $username, $passwordId);
 			}
+			$sth->execute();
 		}
 
 		function updatePasswordAccess($passwordId)
