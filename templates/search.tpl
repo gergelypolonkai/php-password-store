@@ -30,7 +30,7 @@
 				</tr>
 				<tr>
 					<td>Available in groups</td>
-					<td><select name="pwgroups[]"></select></td>
+					<td><select name="pwgroups[]" multiple="multiple" size="5" id="addpw_grouplist"></select></td>
 				</tr>
 			</table>
 			<input type="button" id="save_password" value="Save" class="submit" />
