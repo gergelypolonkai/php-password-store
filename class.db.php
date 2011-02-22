@@ -410,6 +410,14 @@ if (!class_exists('PWSdb'))
 
 			return $sth->fetchAll();
 		}
+
+		function getInactivePasswords($inactiveInterval)
+		{
+			$sth = $this->prepare('SELECT id, short, long, username, groups, lastaccess FROM passwords WHERE datetime(lastaccess, ?) < datetime(\'now\')');
+			$sth->execute(array($inactiveInterval));
+
+			return $sth->fetchAll();
+		}
 	}
 }
 
