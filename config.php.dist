@@ -30,3 +30,12 @@ $smartyCache = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . dirname($_SERVE
 // Encryption algorythm to use. Encryption method must support ECB mode.
 $encryptionAlg = MCRYPT_RIJNDAEL_256;
 
+// After how much time will the user count as inactive? This should be given as
+// an SQLite modifier (see http://www.sqlite.org/lang_datefunc.html for
+// details)
+$userInactiveTime = '30 days';
+
+// After how much time will passwords count as inactive? Same restrictions
+// apply as for $userInactiveTime
+$passwordInactiveTime = '30 days';
+
