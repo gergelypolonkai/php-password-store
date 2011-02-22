@@ -290,17 +290,20 @@ if (!class_exists('PWSdb'))
 
 		function updatePassword($passwordId, $newPassword, $username = null)
 		{
+			$query = '';
+			$params = array();
 			if ($username === null)
 			{
-				$sth = $this->prepare('UPDATE passwords SET password = ? WHERE id = ?');
+				$query = 'UPDATE passwords SET password = ? WHERE id = ?';
 				$params = array($this->encryptPassword($newPassword), $passwordId);
 			}
 			else
 			{
-				$sth = $this->prepare('UPDATE passwords SET password = ?, modifiedby = ?, modifiedat = datetime(\'now\') WHERE id = ?');
+				$query = 'UPDATE passwords SET password = ?, modifiedby = ?, modifiedat = datetime(\'now\') WHERE id = ?';
 				$params = array($this->encryptPassword($newPassword), $username, $passwordId);
 			}
-			$sth->execute();
+			$sth = $this->prepare($query);
+			$sth->execute($params);
 		}
 
 		function updatePasswordAccess($passwordId)
@@ -389,6 +392,14 @@ if (!class_exists('PWSdb'))
 		{
 			$sth = $this->prepare('SELECT id, short, groups FROM passwords WHERE short LIKE :querytext OR long LIKE :querytext ESCAPE \'~\' ORDER BY short');
 			$sth->execute(array(':querytext' => '%' . str_replace(array('%', '_'), array('~%', '~_'), $query) . '%'));
+			return $sth->fetchAll();
+		}
+
+		function getClearPasswords()
+		{
+			$sth = $this->prepare('SELECT id, password FROM passwords WHERE password LIKE ?');
+			$sth->execute(array('{CLEAR}%'));
+
 			return $sth->fetchAll();
 		}
 	}
