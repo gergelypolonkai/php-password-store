@@ -402,6 +402,14 @@ if (!class_exists('PWSdb'))
 
 			return $sth->fetchAll();
 		}
+
+		function getInactiveUsers($inactiveInterval)
+		{
+			$sth = $this->prepare('SELECT id, username, lastlogin, administrator FROM users WHERE datetime(lastlogin, ?) < datetime(\'now\')');
+			$sth->execute(array($inactiveInterval));
+
+			return $sth->fetchAll();
+		}
 	}
 }
 
