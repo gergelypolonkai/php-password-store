@@ -41,16 +41,29 @@
 			<h2>Accessible password groups</h2>
 {foreach $passwordgroups as $passwordgroup=>$permissions}
 	{if $permissions@first}
-			<ul>
+			<table>
+				<tbody>
 	{/if}
-				<li>
-					<span class="pwgname" id="pwgname_{$passwordgroup}">{$passwordgroup}</span>{if ($permissions == 'rw') || ($isadmin)} [Add password]{/if}
-				</li>
+					<tr>
+						<td>
+							<span class="pwgname" id="pwgname_{$passwordgroup}">{$passwordgroup}</span>
+						</td>
+						<td>
+							{if ($permissions == 'rw') || ($isadmin)}[Add password]{/if}
+						</td>
+						<td>
+							{if ($permissions == 'rw') || ($isadmin)}[Group settings]{/if}
+						</td>
+						<td>
+							{if ($isadmin)}[Delete group]{/if}
+						</td>
+					</tr>
 	{if $permissions@last}
-{if $isadmin}
-				<li id="addnewgroup">Create new group</li>
-{/if}
-			</ul>
+				</tbody>
+			</table>
+		{if $isadmin}
+			<span id="addnewgroup">Create new group</li>
+		{/if}
 	{/if}
 {/foreach}
 		</div>
