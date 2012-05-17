@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$('#username').tooltip({
 		bodyHandler: function() {
-			return 'JUJ!';
+			return 'User information will go here';
 		},
 		track: true,
 		delay: 0,
