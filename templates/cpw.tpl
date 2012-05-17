@@ -47,7 +47,7 @@
 					<td><input type="password" name="newpw2" /></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="Save" /></td>
+					<td colspan="2"><input type="submit" class="submit" value="Save" /></td>
 				</tr>
 			</table>
 		</form>
