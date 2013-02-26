@@ -73,5 +73,16 @@
 			</div>
 			<span id="showpasswordgroups" class="button">Back to password groups</span>
 		</div>
-		<div id="passwordinfo"></div>
+		<div id="passwordinfo">
+			<ul>
+				<li><strong>Short description</strong>: <span></span></li>
+				<li><strong>Long description</strong>: <span></span></li>
+				<li><strong>Username</strong>: <span></span></li>
+				<li><strong>Password</strong>: <span></span></li>
+				<li>
+					<strong>Additional information</strong>:<br />
+					<span></span>
+				</li>
+			</ul>
+		</div>
 {include file="foot.tpl"}

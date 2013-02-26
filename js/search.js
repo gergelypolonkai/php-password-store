@@ -4,21 +4,20 @@ var passwords_visible = false;
 
 function pwitem_update() {
 	$('#error').html('');
-	$('#passwordinfo').html('Fetching...');
+	$('#passwordinfo').hide();
+	$('#info').html('Fetching...');
 
 	$.post('getpw.php', { id: $(this).attr('id').replace(/^pw_/, '') }, function(pwxml) {
 		pwinfo = $('result', pwxml);
 		if (pwinfo.length > 0)
 		{
-			$('#passwordinfo').html(
-				'<ul>' +
-				'<li>Short description: ' + $('short', pwinfo).text() + '</li>' +
-				'<li>Long description: ' + $('long', pwinfo).text() + '</li>' +
-				'<li>Username: ' + $('username', pwinfo).text() + '</li>' +
-				'<li>Password: ' + $('password', pwinfo).text() + '</li>' +
-				'<li>Additional information: ' + $('additional', pwinfo).text() + '</li>' +
-				'</ul>'
-			);
+			$('#passwordinfo > ul > li:eq(0) > span').html($('short', pwinfo).text());
+			$('#passwordinfo > ul > li:eq(1) > span').html($('long', pwinfo).text());
+			$('#passwordinfo > ul > li:eq(2) > span').html($('username', pwinfo).text());
+			$('#passwordinfo > ul > li:eq(3) > span').html($('password', pwinfo).text());
+			$('#passwordinfo > ul > li:eq(4) > span').html($('additional', pwinfo).text());
+			$('#info').html('');
+			$('#passwordinfo').show();
 		}
 	});
 };
@@ -78,7 +77,7 @@ $(document).ready(function() {
 		$('#error').html('');
 		$('#info').html('');
 		$('#results').html('');
-		$('#passwordinfo').html('');
+		$('#passwordinfo').hide();
 		$('#query').val('');
 		if (groups_visible)
 		{
@@ -131,7 +130,7 @@ $(document).ready(function() {
 	$('#showpasswordgroups').click(function(e) {
 		$('#passwordgroups').show();
 		$('#passwords').hide();
-		$('#passwordinfo').html('');
+		$('#passwordinfo').hide();
 	});
 });
 
